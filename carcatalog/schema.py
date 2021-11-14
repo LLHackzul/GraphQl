@@ -29,8 +29,11 @@ class CarType(DjangoObjectType):
 
 class Query(graphene.ObjectType):
     all_cars = graphene.List(CarType)
+    all_categories = graphene.List(CategoryType)
     category_by_name = graphene.Field(CategoryType, name=graphene.String(required=True))
 
+    def resolve_all_categories(root,info):
+        return Category.objects.all()
     def resolve_all_cars(root, info):
         # We can easily optimize query count in the resolve method
         return Car.objects.select_related("category").all()

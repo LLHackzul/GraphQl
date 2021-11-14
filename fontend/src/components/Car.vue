@@ -1,10 +1,14 @@
 <template>
   <div>
-    <ul>
-        <li :key="carro.id" v-for="carro  in carros.data.allCars" >
-          {{carro.name}} {{carro.line}} {{carro.model}}
-        </li>
-    </ul>    
+    <div :key="categoria.id" v-for="categoria  in categorias.data.allCategories">
+        <h2>{{categoria.name}}</h2>
+        <ul>
+            <li :key="carro.id" v-for="carro  in categoria.cars">
+                <strong> Marca:</strong> {{carro.name}} <strong> Línea:</strong> {{carro.line}} <strong> Color:</strong> {{carro.color}}  <strong> Modelo:</strong> {{carro.model}}
+            </li>
+        </ul>
+    </div>
+      
   </div>
 </template>
     
@@ -18,7 +22,8 @@ import gql from 'graphql-tag'
     //definimos la variable que almacenara el listado de ingredientes
     data () {
       return {
-        carros: ''
+        carros: '',
+        categorias: ''
       }
     },    
 
@@ -29,7 +34,7 @@ import gql from 'graphql-tag'
       async leerCarros(){
         
         //desde aquí se realiza la consulta a Graphql y el resultado se guarda en una constante
-        const ingredientesGraphql = await this.$apollo.query({
+        const carrosGraphql = await this.$apollo.query({
         query: gql`query {
                    allCars {
                         name,
@@ -44,15 +49,35 @@ import gql from 'graphql-tag'
         })
 
         //El dato obtenido de Graphql se lo asignamos a la variable ingredientes que se mostrara en el template
-        this.carros = ingredientesGraphql
+        this.carros = carrosGraphql
         
 
+      },
+      async leerCategorias(){
+          const categoriasGraphql = await this.$apollo.query({
+        query: gql`query {
+  allCategories {
+    name
+    cars {
+      name,
+      line,
+			color,
+			model,
+    }
+  }
+}`,     
+        })
+
+        //El dato obtenido de Graphql se lo asignamos a la variable ingredientes que se mostrara en el template
+        this.categorias = categoriasGraphql
+        
       }      
 
     },
     //el metodo leerIngredientes se ejecutara cada vez que los componentes de la pagina ya esten montados
     mounted () {
-      this.leerCarros()
+      this.leerCarros(),
+       this.leerCategorias()
     }
     
   }
