@@ -1,0 +1,52 @@
+[
+    {
+        "model": "car.category",
+        "pk": 1,
+        "fields": {
+            "name": "SUV"
+        }
+    },
+    {
+        "model": "car.category",
+        "pk": 2,
+        "fields": {
+            "name": "Coupé"
+        }
+    },
+    {
+        "model": "car.car",
+        "pk": 1,
+        "fields": {
+            "name": "Lamborhini",
+            "line": "Urus",
+            "color": "Yellow",
+            "transmition": "Automatic",
+            "model": "2021",
+            "category": 1
+        }
+    },
+    {
+        "model": "car.car",
+        "pk": 2,
+        "fields": {
+            "name": "Ford",
+            "line": "Mustang",
+            "color": "Black",
+            "transmition": "Automatic",
+            "model": "2016",
+            "category": 2
+        }
+    },
+    {
+        "model": "car.car",
+        "pk": 3,
+        "fields": {
+            "name": "Ford",
+            "line": "Mustang",
+            "color": "Grey",
+            "transmition": "Manual",
+            "model": "2014",
+            "category": 2
+        }
+    }
+]
