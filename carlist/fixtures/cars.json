@@ -1,20 +1,20 @@
 [
     {
-        "model": "car.category",
+        "model": "carlist.category",
         "pk": 1,
         "fields": {
             "name": "SUV"
         }
     },
     {
-        "model": "car.category",
+        "model": "carlist.category",
         "pk": 2,
         "fields": {
             "name": "Coupé"
         }
     },
     {
-        "model": "car.car",
+        "model": "carlist.car",
         "pk": 1,
         "fields": {
             "name": "Lamborhini",
@@ -26,7 +26,7 @@
         }
     },
     {
-        "model": "car.car",
+        "model": "carlist.car",
         "pk": 2,
         "fields": {
             "name": "Ford",
@@ -38,7 +38,7 @@
         }
     },
     {
-        "model": "car.car",
+        "model": "carlist.car",
         "pk": 3,
         "fields": {
             "name": "Ford",
